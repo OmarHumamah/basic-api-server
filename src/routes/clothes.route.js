@@ -33,7 +33,9 @@ async function creatClothes(req, res) {
 
 async function updateClothes(req, res) {
   const id = parseInt(req.params.id);
+  const obj = req.body;
   const updateClothes = await Clothes.findOne({ where: { id: id } });
+  const foundFood = await updateClothes.update(obj); 
   res.status(201).json(updateClothes);
 }
 

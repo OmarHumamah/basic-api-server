@@ -33,7 +33,9 @@ async function creatFood(req, res) {
 
 async function updateFood(req, res) {
   const id = parseInt(req.params.id);
+  const obj = req.body;
   const updateFood = await Food.findOne({ where: { id: id } });
+  const foundFood = await updateFood.update(obj); 
   res.status(201).json(updateFood);
 }
 
